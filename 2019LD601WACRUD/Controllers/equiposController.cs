@@ -33,30 +33,6 @@ namespace _2019LD601WACRUD.Controllers
             return NotFound();
         }
 
-        [HttpGet]
-        [Route("api/equipos/join")]
-        public IActionResult GetJoin()
-        {
-            //IEnumerable<equipos> equiposList = from e in _contexto.equipos
-            //                                   join m in _contexto.marcas on e.marca_id equals m.id_marcas
-            //                                   select e;
-
-            var equiposList = (from e in _contexto.equipos
-                               join m in _contexto.marcas on e.marca_id equals m.id_marcas
-                               select new { 
-                                   e.id_equipos,
-                                   e.nombre,
-                                   e.descripcion,
-                                   e.marca_id,
-                                   m.nombre_marca
-                               });
-
-            if (equiposList.Count() > 0)
-            {
-                return Ok(equiposList);
-            }
-            return NotFound();
-        }
 
         [HttpGet]
         [Route("api/equipos/{idUsuario}")]
